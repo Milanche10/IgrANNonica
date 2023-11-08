@@ -1,0 +1,26 @@
+.labels{
+    height: 30px;
+    margin-bottom: 10px;
+}
+.buttons{
+    margin:5px;
+    background-color:  rgb(153,176,226);
+    color:rgb(40,52,77);
+    /* background-color: white; */
+    /* color:black; */
+}
+.mat-mini-fab{
+    height: 30px;
+    width: 30px;
+}
+.mat-mini-fab.mat-button-disabled.mat-button-disabled{
+    background-color:  rgb(153,176,226,.50);
+}
+
+.labels p {
+    font-size: small;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    vertical-align: middle;
+}

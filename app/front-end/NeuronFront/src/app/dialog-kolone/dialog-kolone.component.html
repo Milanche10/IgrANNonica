@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="title">Potvrđivanje akcije</h2>
+<mat-dialog-content class="mat-typography">
+<p>
+ {{fileUploadS.message_dialog}}
+</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div *ngIf="!fileUploadS.problem_nedostajuce">
+  <button mat-button mat-dialog-close (click)="odustani()">Odustani</button>
+  <button mat-button cdkFocusInitial (click)="salji()">Nastavi</button>
+  </div>
+  <div *ngIf="fileUploadS.problem_nedostajuce">
+    <button mat-button mat-dialog-close >Ispravi</button>
+  </div>
+</mat-dialog-actions>

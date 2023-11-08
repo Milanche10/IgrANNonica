@@ -1,0 +1,82 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<router-outlet></router-outlet>
+<body scroll="no">
+    <div class="container" >
+        <div class="screen">
+            <div class="screen__content">
+                
+                <form class="login" [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+                    <h1 class="title"><a [routerLink]="['/']" class="back-link"><i class="fas fa-arrow-circle-left"></i> </a>Registracija</h1>
+                    <hr>
+                    <div class="login__field" >
+                        <i class="login__icon fas fa-user-circle"></i>
+                        <input formControlName="FullName" name='fullName 'type="text" class="form-control login-input required" placeholder="Unesite ime i prezime">
+                        <label class="text-danger" *ngIf="service.formModel.get('FullName')?.touched && service.formModel.get('FullName')?.errors?.['required']">
+                            Ovo polje je obavezno!
+                        </label>
+                        <label class="text-danger" *ngIf="service.formModel.get('FullName')?.touched && service.formModel.get('FullName')?.errors?.['pattern']">
+                            Ime ne sme sadržati brojeve!
+                        </label>
+                    </div>
+                    
+                    <div class="login__field">
+                        <i class="login__icon fas fa-envelope"></i>
+                        <input formControlName="Email" type="text" class="form-control login-input required" placeholder="Unesite e-mail adresu">
+                        <label class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors?.['required']">
+                            Ovo polje je obavezno!
+                        </label>
+                        <label class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors?.['pattern']">
+                            Uneli ste nepostojeći e-mail!
+                        </label>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input formControlName="UserName" type="text" class="form-control login-input required" placeholder="Unesite korisničko ime">
+                        <label class="text-danger" *ngIf="service.formModel.get('UserName')?.touched && service.formModel.get('UserName')?.errors?.['required']">
+                            Ovo polje je obavezno!
+                        </label>
+                        <label class="text-danger" *ngIf="service.formModel.get('UserName')?.touched && service.formModel.get('UserName')?.errors?.['pattern']">
+                            Korisničko ime može da sadrži: velika i mala slova engleskog alfabeta, brojeve, "-" i "_" i mora biti dužine 4-16 karaktera!
+                        </label>
+                    </div>
+                   
+                    <div class="row" formGroupName="Passwords">
+                        <div class="login__field col-6">
+                            <i class="login__icon fas fa-lock"></i>
+                            <input formControlName="Password" type="password" class="form-control login-input required" placeholder="Unesite lozinku">
+                            <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password')?.touched && service.formModel.get('Passwords.Password')?.errors?.['required']">Ovo polje je obavezno!<br></label>
+                            <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password')?.touched && service.formModel.get('Passwords.Password')?.errors?.['pattern']">Lozinka mora da sadrži: veliko slovo, malo slovo i broj i mora biti dužine 8-24 karaktera!<br></label>
+                        </div>
+                        <div class="login__field col-6">
+                            <i class="login__icon fas fa-key"></i>
+                            <input formControlName="ConfirmPassword" type="password" class="form-control login-input required" placeholder="Potvrdite lozinku">
+                            <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword')?.touched && service.formModel.get('Passwords.ConfirmPassword')?.errors?.['required']">Ovo polje je obavezno</label>
+                            <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword')?.touched && service.formModel.get('Passwords.ConfirmPassword')?.errors?.['passwordMismatch']">Potvrđena i uneta lozinka se razlikuju!</label>
+                            
+                        </div>
+                    </div>
+                    <p>Imate nalog? <a [routerLink]="['/login']">Prijavite se</a></p>
+                    <button type="submit" class="form-group login__submit" [disabled]="!service.formModel.valid">
+                        <i class="button__icon fas fa-arrow-alt-circle-right"></i>
+                    </button>	
+                </form>
+                <!--<div class="social-login">
+                    <h3>log in via</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-login__icon fab fa-instagram"></a>
+                        <a href="#" class="social-login__icon fab fa-facebook"></a>
+                        <a href="#" class="social-login__icon fab fa-twitter"></a>
+                    </div>
+                </div>-->
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+</body>

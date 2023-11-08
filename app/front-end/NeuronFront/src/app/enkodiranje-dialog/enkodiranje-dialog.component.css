@@ -1,0 +1,60 @@
+.mat-typography{
+    height:80px;
+    width:100%;
+    color:#0b6e9b;
+    font-size: medium;
+}
+.title{
+    width: 100%;
+    color: #0b6e9b;
+    text-align: center;
+    font-size: 26px;
+    background-color:#ec9543 ;
+    background-position: center;
+    border-radius: 10px;
+}
+.box{
+height: 80px;
+width: 150px;
+margin-right: 10px;
+float:left;
+padding-left: 5px;
+}
+.box button{
+    float: right;
+    background-color: thistle;
+    border-radius: 10px;
+    color: #0b6e9b;
+    background-position: center;
+    padding: 5px;
+    font-weight: bold;
+
+}
+.but{
+    background-color: thistle;
+    border-radius: 10px;
+    color: #0b6e9b;
+    background-position: center;
+    padding: 5px;
+    font-weight: bold;
+}
+.box1{
+    height: 100%;
+    width: 265px;
+    margin-right: 0px;
+    float:left;
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), url('../../assets/img/pozadina2.jpg');
+    background-position: center;
+    background-repeat: repeat-y;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    padding: 20px;
+    overflow: scroll;
+}
+.div_color{
+    -webkit-box-shadow: 0 0 10px 5px thistle;
+    -moz-box-shadow: 0 0 10px 5px thistle;
+    box-shadow: 0 0 10px 5px thistle;
+    text-align: center;  
+}

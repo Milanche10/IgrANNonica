@@ -1,0 +1,60 @@
+mat-slider ::ng-deep  .mat-slider-thumb-label {
+    transform: rotate(45deg) !important;
+    border-radius: 50% 50% 0 !important;
+  }
+
+  mat-slider ::ng-deep .mat-slider-thumb {
+    transform: scale(0) !important;
+}
+
+mat-slider ::ng-deep  .mat-slider-thumb-label-text {
+    opacity: 1 !important;
+}
+.mat-slider-horizontal {
+    max-width: 300px;
+    width: 100%;
+  }
+  .mat-dialog-content{
+      overflow: hidden;
+  }
+.small {
+    width: 50px;
+}
+.display-inline{
+    display: inline-block;
+    width: 30%;
+}
+.display-next{
+    display: inline-block;
+    width: 50%;
+}
+.display-under{
+    width: 100%;
+}
+.fa-solid{
+    font-size: 35px;
+    color:rgb(40,52,77);
+}
+.playbutton{
+    margin:10px;
+    height:80px;
+    width:80px;
+    background-color:  rgb(153,176,226);
+}
+mat-checkbox{
+    margin-right: 50px;
+}
+/* .display-inline-last-element{
+    display: inline-block;
+    width: 40%;
+} */
+/* .shittySlider1{
+    float: left;
+    width:70%;
+}
+.shittySlider2{
+    float:right;
+}
+.eh{
+    float:none;
+} */

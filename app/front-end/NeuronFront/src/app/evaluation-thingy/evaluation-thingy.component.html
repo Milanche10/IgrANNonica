@@ -1,0 +1,65 @@
+<div class="container">
+    <div>
+        <div class="metrics">
+            <div>
+                loss: {{loss}}
+            </div>
+            <div *ngIf="metrics.indexOf('mae')>-1">
+                mae: {{mae}}
+            </div>
+            <div *ngIf="metrics.indexOf('mse')>-1">
+                mse: {{mse}}
+            </div>
+            <div *ngIf="metrics.indexOf('rmse')>-1">
+                rmse: {{rmse}}
+            </div>
+            <div *ngIf="metrics.indexOf('accuracy')>-1">
+                accuracy: {{accuracy}}
+            </div>
+            <div *ngIf="metrics.indexOf('auc')>-1">
+                auc: {{auc}}
+            </div>
+        </div>
+        <div class="actualtopredicted">
+            <!-- {{evaluationResponse}} -->
+        </div>
+    </div>
+    <!-- <div *ngIf="dataLength>0">
+        <div *ngFor="let d of dataSource">
+            {{d.actual}}
+            {{d.predicted}}
+        </div>
+    </div>
+    {{dataLength}} -->
+    <div class="valuesofactualpredicted" >
+        <table>
+            <tr>
+                <th>Stvarne vrednosti</th>
+                <th>Prediktovane vrednosti</th>
+            </tr>
+            <tr *ngFor="let e of [].constructor(evaluateResponse.Actual.length); let i = index;">
+                <td>{{evaluateResponse.Actual[i]}}</td>
+                <td>{{evaluateResponse.Predicted[i]}}</td>
+            </tr>
+        </table>
+        <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            - Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+            
+            <!-- <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Actual </th>
+              <td mat-cell *matCellDef="let element"> {{element.actual}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Predicted </th>
+              <td mat-cell *matCellDef="let element"> {{element.predicted}} </td>
+            </ng-container>
+                    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table> --> 
+          
+    </div>
+</div>

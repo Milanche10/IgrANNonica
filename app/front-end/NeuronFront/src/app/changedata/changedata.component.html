@@ -1,0 +1,5 @@
+<td>
+    <button (click)="edit()" class="button" [style.display]="!isVisible ? 'block' : 'none'"><i class="fa-solid fa-pen"></i></button>
+    <button (click)="delete()" class="button" [style.display]="!isVisible ? 'block' : 'none'"><i class="fa-solid fa-trash"></i></button>
+    <button (click)="submit()" class="button"[style.display]="isVisible ? 'block' : 'none'"><i class="fa-solid fa-floppy-disk"></i></button>
+</td>

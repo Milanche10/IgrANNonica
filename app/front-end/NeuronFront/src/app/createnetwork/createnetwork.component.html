@@ -1,0 +1,10 @@
+<router-outlet></router-outlet>
+<app-head></app-head>
+<body>
+    <app-navbar></app-navbar>
+    <div class="page-container">
+        <br><br><br><br>
+        <app-global-experiment-controls *ngIf="showSideBar" (updatedModelName)="updateModelNames($event)" (createNewModel)="newModelCreated($event)" (nextEvent)="clickedNext()" (deletedModel)="deletedModel($event)" (previousEvent)="clickedPrevious()" [isNextEnabled]="selectedIndex>=numberOfModels-1" [isPreviousEnabled]="selectedIndex-1<0" (changedModelEvent)="changedModelFromModelOverview($event)" [modelList]="modelList"></app-global-experiment-controls>
+        <app-neuronnetwork *ngFor="let ind of [].constructor(numberOfModels); let i=index;" [shownOnScreen]="i==selectedIndex" (startTrainingEvent)="startTraining($event)" [myIndex]="i"></app-neuronnetwork>
+    </div>
+</body>

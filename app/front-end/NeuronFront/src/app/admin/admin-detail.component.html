@@ -1,0 +1,42 @@
+<body>
+    
+
+<app-navbar></app-navbar>
+<br><br>
+<br><br>
+<br><br>
+<div class="jumbotron py-3">
+    <h1 class="display-6 text-center" (click) = "refreshPage()">Admin Detail</h1>
+</div>
+<div class="row">
+    <div class="col-md-5 forma">
+
+
+        <app-admin-form></app-admin-form>
+    </div>
+    <div class="col-md-6 tabelica">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Username</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pd of service.list">
+                    <td (click)="populateForm(pd)">{{pd.UserName}}</td>
+                    <td (click)="populateForm(pd)">{{ pd.FullName}}</td>
+                    <td (click)="populateForm(pd)">{{ pd.Email}}</td>
+                    <td>
+                        <!--<button mat-button class="btn-delete" (click)="onDelete(pd.Id)"><i class="fa-solid fa-trash"></i></button>-->
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.Id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+

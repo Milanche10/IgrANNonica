@@ -1,0 +1,31 @@
+.stats{
+    /* height:1000px; */
+    /* width:1600px; */
+    /* box-shadow: 0 1px 2px 1px rgb(0 0 0 / 60%); */
+    border-radius: 10px;
+    background-color: white;
+    color:aliceblue;
+    font-family: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+}
+h2{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    
+}
+.selected{
+    box-shadow: 0 1px 2px 1px rgb(153 176 226 / 60%);
+}
+svg{
+    width:300px;
+    height:200px;
+}
+canvas{
+    color:aliceblue;
+    border-color: aliceblue;
+}
+.chart{
+    display: inline-block !important;
+    max-width: 600px;
+    max-height: 300px;
+}

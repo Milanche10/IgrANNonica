@@ -1,0 +1,24 @@
+<div>
+    <div class="configuration next-to-each-other">
+        <div class="config-boxes">
+            <p><b>Aktivaciona funkcija na skrivenom sloju</b></p>
+            {{configuration[0]}}
+        </div>
+        <div class="config-boxes">
+            <p><b>Aktivaciona funkcija na Output sloju</b></p>
+            {{configuration[1]}}
+        </div>
+        <div class="config-boxes">
+            <p><b>Funkcija gubitka</b></p>
+            {{configuration[2]}}
+        </div>
+        <div class="config-boxes">
+            <p><b>Metrike</b></p>
+            {{metrics}}
+        </div>
+    </div>
+    <div class="next-to-each-other">
+        <button mat-stroked-button class="buttons" [disabled]="LoadingScreenService.isLoading || disabled" (click)="onEvaluateModelClick()">Evaluacija modela</button>
+        <button mat-stroked-button class="buttons" (click)="onChangeConfig()" [disabled]="LoadingScreenService.isLoading">Promeni podesavanja</button>
+    </div>
+</div>

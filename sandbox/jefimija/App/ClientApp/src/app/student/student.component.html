@@ -1,0 +1,23 @@
+<h1> Studenti </h1>
+<table style ="width:50%; float:left" class='table table-striped' aria-labelledby="tableLabel" *ngIf ="students && students.length>0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.name}}</td>
+      <td>{{student.surname}}</td>
+    </tr>
+  </tbody>
+</table>
+<form style="width:40%; float:right; padding:0px 5px;">
+  <h5 style="text-align:center">Add student</h5>
+  <div class="form-group">
+    <input type="text" #name class="form-control form-control-lg" placeholder="Input student name" /><br />
+    <input type="text" #surname class="form-control form-control-lg" placeholder="Input student surname" /><br />
+    <button class="btn btn-primary" (click) ="add(name.value, surname.value)">Submit</button> 
+  </div>
+</form>

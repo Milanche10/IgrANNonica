@@ -1,0 +1,22 @@
+<h1>Sabiranje dva broja</h1>
+<form style="width:35%; float:left; padding:0px 5px;">
+  <h3 style="text-align:center">Unesite dva broja</h3>
+  <div class="form-group">
+    <input type="number" #broj1 class="form-control form-control-lg" placeholder="Unesite prvi broj" /><br />
+    <input type="number" #broj2 class="from-control form-control-lg" placeholder="Unesite drugi broj" /><br />
+    <button class="btn btn-primary" (click)="sum(broj1.value, broj2.value)">Saberi</button>
+  </div>
+</form>
+<h2>Rezultati sabiranja</h2>
+<table style="width: 40%; float:left" class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th>Rezultati</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let broj of brojs">
+      <td>{{broj.rezultat}}</td>
+    </tr>
+  </tbody>
+</table>

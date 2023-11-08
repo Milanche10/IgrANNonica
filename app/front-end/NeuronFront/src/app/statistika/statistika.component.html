@@ -1,0 +1,47 @@
+
+<div class="container">
+  <div class="statistikaP">
+    <button class="button" (click)="matrica=true; metrika=false" [style.background-color]="matrica?'#56f77e':'#75CDE1'">Prikaz matrice korelacije</button> &nbsp; <button class="button" (click)="matrica=false; metrika=true" [style.background-color]="metrika?'#56f77e':'#75CDE1'">Prikaz statistike(Rezime)</button>
+  </div>
+  <br>
+  <div  *ngIf="matrica">
+  <h2>Matrica korelacije</h2>
+  <div class="containerT">
+    <table class="tabela">
+        <thead>
+          <tr >
+            <th *ngFor="let item of statistikaS.koloneH_1[0]">{{item}}</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr   *ngFor="let item of statistikaS.redoviR_1[0];let i=index;">
+            <td *ngFor="let itemm of statistikaS.koloneH_1[0]; let j = index" >{{item[j]}}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  </div>
+<div *ngIf="metrika">
+  <h2>Rezime</h2>
+  <div class="containerT">
+  <table class="tabela">
+    <thead>
+      <tr >
+        <th *ngFor="let item of statistikaS.koloneH_2[0] ">{{item}}</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="m"  *ngFor="let item of statistikaS.redoviR_2[0];let i=index;">
+        <td *ngFor="let itemm of statistikaS.koloneH_2[0]; let j = index" >{{item[j]}}</td>
+      </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+
+</div>
+
+

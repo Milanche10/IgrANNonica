@@ -1,0 +1,95 @@
+.select-options {
+    margin: 0px 5px;
+    text-align: center;
+
+}
+
+.select-option {
+    text-align: left;
+}
+
+.labels {
+    height: 30px;
+}
+
+.labels p {
+    font-size: small;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.entire-box {
+    margin: 5px;
+}
+mat-select ::ng-deep .mat-select-value {
+    color: rgb(193, 206, 234) !important;
+}
+
+::ng-deep mat-form-field span.mat-form-field-label-wrapper label {
+    color: rgb(193, 206, 234) !important;
+}
+
+::ng-deep mat-form-field.mat-focused span.mat-form-field-label-wrapper label {
+    color: rgb(193, 206, 234) !important;
+    /* color: rgb(0,31,57, 0.8); */
+}
+
+mat-chip-list {
+    /* width: 300px; */
+    width:250px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+mat-chip {
+    font-size: small;
+    padding: 0;
+    color: rgb(40, 52, 77) !important;
+    background-color: rgb(153, 176, 226) !important;
+}
+
+mat-form-field ::ng-deep .mat-form-field-flex {
+    /* background: transparent !important; */
+    background-color: rgb(153, 176, 226, .50);
+    /* background-color: rgb(0,31,57, 0.8); */
+    color: rgb(193, 206, 234) !important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    rgb(193, 206, 234) ;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    rgb(193, 206, 234) ;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    rgb(193, 206, 234) ;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    rgb(193, 206, 234) ;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    rgb(193, 206, 234) ;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    rgb(193, 206, 234) ;
+}
+
+.input-field{
+    border-bottom: 2px solid /*rgb(15, 155, 73);*/ yellow;
+}
+
+:host div ::ng-deep .mat-select-arrow {
+    color: rgb(40, 52, 77) !important;
+}
+
+:host div ::ng-deep .mat-form-field-ripple {
+    background-color: /*rgb(15, 155, 73) !important;*/ yellow;
+}
+
+:host ::ng-deep .mat-option-text {
+    color: /*rgb(15, 155, 73) !important;*/ yellow;
+}

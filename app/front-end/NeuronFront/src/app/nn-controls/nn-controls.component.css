@@ -1,0 +1,21 @@
+.playbutton{
+    margin:0px;
+    margin-right: -40px;
+    margin-left: 100px;
+    height:70px;
+    width:70px;
+    background-color:  rgb(153,176,226);
+}
+
+.controls{
+    height: 15%;
+    /* float: right; */
+    margin-right:100px;
+}
+
+.fa-unlock{
+    color:rgb(40,52,77);
+}
+.fa-solid{
+    font-size: 35px;
+}

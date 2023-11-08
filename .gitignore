@@ -1,0 +1,4 @@
+*.bak
+app/ANN/__pycache__/DataProcessing.cpython-36.pyc
+app/ANN/__pycache__/main.cpython-36.pyc
+app/ANN/__pycache__/NeuralNetwork.cpython-36.pyc

@@ -1,0 +1,14 @@
+<div  [ngClass]="{'hidden' : !shownOnScreen}" class="container">
+    <div [@rollUp]="rollUp" class="container-small">
+        <!-- <button>Button koji ce sluziti za ponovno otvaranje komponente datasetoperations</button> -->
+        <button mat-stroked-button class="buttons" (click)="openDialogBoxAgain()" *ngIf="!started">Train/Test</button>
+        <app-nn-controls [firstLayer]="arrayOfHiddenLayersCaughtFromControls[0]" (disableButtonsOnNeuronLayers)="onDisableButtonsEvent($event)" (enableButtonsOnNeuronLayers)="stopTraining()" (numberOfHiddenLayersFromControls)="onChangeNumberOfHiddenLayersEvent($event)" (arrayOfHiddenLayersFromControls)="onChangeNumberOfNeuronsInLayer($event)" [events]="neuronAddedOnLayerId.asObservable()" [disabled]="!enableEverything"  [OutputUnits]="outputUnits" *ngIf="!started" [problemType]="problemType" [myIndex]="myIndex" [recalibrate]="recalibrateMetrics"></app-nn-controls>
+        <app-neuronnetwork-visualizer [disableButtons]="disableButtons" [numberOfLayers]="numberOfHiddenLayersCaughtFromControls" [numberOfNeuronsPerLayer]="arrayOfHiddenLayersCaughtFromControls" (plusOneNeuronInThisLayer)="onAddedNeuronsEvent($event)" (customNumberOfNeuronsInThisLayer)="addedCustomNeuronsOnLayer($event)" (minusOneNeuronInThisLayer)="onSubtractedNeuronsEvent($event)" [outputLayer]="outputUnits" *ngIf="!started"></app-neuronnetwork-visualizer>
+        <app-start-training (stopTraining)="stopTraining()" [enabled]="disableButtons" (startTraining)="startTraining($event)" *ngIf="!started" (lastEpoch)="onLastEpochSendingEvent($event)"></app-start-training>
+        <app-prediction-component *ngIf="started" (test)="sendTestData($event)" [myIndex]="myIndex" [configuration]="configurationFromNNControls" [metrics]="metrics" (returnToConfigurationSettings)="returnToConfigurationSettings()" (evaluateModel)="sendEvaluateData($event)"></app-prediction-component>
+    </div>
+    <div *ngIf="started" [@slideUp]="slideUp" class="div-below">
+        <app-output-visualizer [BatchSize]="BatchSize" [lastEpoch]="lastEpoch" [metrics]="metrics" [startTraining]="started ? myIndex : -1" ></app-output-visualizer>
+        <app-evaluation-thingy *ngIf="evaluate"  [metrics]="metrics" [evaluateResponse]="evaluateResponse" [myIndex]="myIndex"></app-evaluation-thingy>
+    </div>
+</div>

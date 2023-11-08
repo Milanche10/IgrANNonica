@@ -1,0 +1,58 @@
+<router-outlet></router-outlet>
+<router-outlet></router-outlet>
+<head>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<!-- <div *ngIf="loadingScreenService.isLoading | async" class="loadingScreen-container">
+  <mat-spinner style="top: 50%; right: 50%;"></mat-spinner>
+</div> -->
+
+
+<div *ngIf="loadingScreenService.isLoading" class="loadingScreen-container">
+  <p>Vaš zahtev se obrađuje, molimo Vas sačekajte.</p>
+  <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="loadingScreenService.showNotification | async" class=".RequestPopUp-container hidden" style="animation-delay: 3s;">
+  <div *ngIf="loadingScreenService.isSuccess | async" class="RequestPopUp-container success">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <p>Zahtev je uspešno obrađen.</p>
+  </div>
+  <div *ngIf="!(loadingScreenService.isSuccess | async)" class="RequestPopUp-container">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <p>Zahtev nije uspešno odrađen <br>{{loadingScreenService.errorText}}</p>
+  </div>
+</div> 
+
+<header id="header" class="fixed-top">
+
+  <nav class="navbar navbar-expand-sm" (scroll)="onWindowScroll();">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="logo" (click)="goTo()" ><img src="../../assets/img/logo-transparent-small.png"></a>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end" [ngClass]="{ show: isExpanded }">
+      <ul class="navbar-nav flex-grow">
+        <li [routerLinkActive]="['link-active']">
+          <a class="getstarted scrollto" [routerLink]="['/fileupload']">Započnite</a>
+        </li>
+        <li [routerLinkActive]="['link-active']" *ngIf="!service.isUserAuthenticated()">
+          <a class="getstarted scrollto" [routerLink]="['/register']">Registrujte se</a>
+        </li> 
+        <li [routerLinkActive]="['link-active']" *ngIf="!service.isUserAuthenticated()">
+          <a class="getstarted scrollto" [routerLink]="['/login']">Prijavite se</a>
+        </li>
+        <li class="dropdown" *ngIf="service.isUserAuthenticated()">
+          <button class="dropbtn"><i class="fas fa-user"></i>{{username}}</button>
+          <div class="dropdown-content">
+            <a *ngIf="service.isUserAuthenticated()" [routerLink]="['/profile']"><i class="fas fa-user"></i>Profil</a>
+            <a (click)="service.logOut()"><i class="fas fa-door-open"></i>Odjavi se</a>
+          </div>
+        </li>
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

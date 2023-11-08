@@ -1,0 +1,27 @@
+<br>
+<div class="containerNN">
+    <canvas class="diagram"></canvas>
+    <div class="layers mt-1">
+        <label class="center">Broj skrivenih slojeva: {{numberOfLayers-1}}</label><br><br>
+        <div class="layer" *ngFor="let index of [].constructor(numberOfLayers) | slice : 0 : 11; let i=index">
+            <app-changeamount *ngIf="i" [isMinusEnabled]="numberOfNeuronsPerLayer[i]!=1 && numberOfNeuronsPerLayer[i] && !disableButtons" (plusEvent)="onPlusEventInLayer(i)" (minusEvent)="onMinusEventInLayer(i)" [isPlusEnabled]="!disableButtons"></app-changeamount>
+            <br>
+            <label *ngIf="i">Broj neurona: <b>{{numberOfNeuronsPerLayer[i]}}</b></label>
+            <label *ngIf="!i">Input polja: <b>{{numberOfNeuronsPerLayer[i]}}</b></label>
+            <br>
+            <div *ngIf="numberOfNeuronsPerLayer[i]>6 && i">
+                <label>Koliko tacno?</label><br>
+                <input class="input-number-of-neurons" type="number" [(ngModel)]="value" (change)="onFocused(i)" placeholder="10+">
+            </div>
+            <app-singleneuron *ngFor="let neuron of [].constructor(numberOfNeuronsPerLayer[i]) | slice : 0 : 2"></app-singleneuron>
+            <p class="many" *ngIf="numberOfNeuronsPerLayer[i]>5">...</p>
+            <app-singleneuron *ngFor="let neuron of [].constructor(numberOfNeuronsPerLayer[i]) | slice : 2 : 5"></app-singleneuron>
+        </div>
+        <div class="layer outputs">
+            <br><br>
+            <label>Output polja: <b>{{outputLayer}}</b></label>
+            <app-singleneuron *ngFor="let neuron of [].constructor(outputLayer)"></app-singleneuron>
+        </div>
+    </div>
+    
+</div>

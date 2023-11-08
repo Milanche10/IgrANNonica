@@ -1,0 +1,244 @@
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+  }
+*{
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+body {
+	background-image:linear-gradient(45deg, #343434a4 0%, #05242bbd 100%), url("../../assets/img/profile-background.jpg"), linear-gradient(#7bc5b9, #21745d); 
+	animation: gradient 15s ease infinite;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	z-index: -2;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+p{
+	float: left;
+	margin-top: 10px;
+	padding-left: 20px;
+	font-size: medium;
+	color: #31BBDB;
+}
+a{
+	font-weight: bold;
+	color: #2590A8;
+	text-decoration: none;
+}
+a:hover{
+	color:#9fbcc3;
+}
+.container {
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 110vh;
+}
+
+.screen {		
+	background: linear-gradient(90deg, #75CDE1, #144F5C);		
+	position: absolute;
+  	top:15%; 
+	height: auto;
+	width: auto;	
+	box-shadow: 0px 0px 50px #144F5C;
+	padding-bottom: 20px;
+	margin-bottom: 60px;
+	border-radius: 10px;
+}
+
+.screen__content {
+	z-index: 1;
+	position: relative;	
+	height: 100%;
+	margin-top: 20px;
+}
+.screen__background {		
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	-webkit-clip-path: inset(0 0 0 0);
+	clip-path: inset(0 0 0 0);	
+}
+.title{
+	text-align: left;
+	color:#2590A8; 
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	margin-bottom: 0;
+}
+hr{
+	height:5px;
+	color:#2590A8; 
+	opacity: 50%;
+	border-radius: 5px;
+}
+.screen__background__shape {
+	transform: rotate(45deg);
+	position: absolute;
+}
+
+.screen__background__shape1 {
+	height: 520px;
+	width: 520px;
+	background: #072330; 	
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+	height: 220px;
+	width: 220px;
+	background:#29F2E1;
+	top: -172px;
+	right: 0;	
+	border-radius: 32px;
+}
+.screen__background__shape3 {
+	height: 540px;
+	width: 190px;
+	background: linear-gradient(270deg, #75CDE1, #27E8A1);
+	top: -24px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape4 {
+	height: 400px;
+	width: 200px;
+	background: #27E8A1;
+	top: 420px;
+	right: 50px;	
+	border-radius: 60px;
+}
+
+.login {
+	width: 450px; 
+	padding: 30px;
+	padding-top: 10px;
+	left: -10px;
+}
+
+.login__field {
+	padding: 5px;	
+	position: relative;	
+}
+
+.login__icon {
+	position: absolute;
+	top: 20px;
+	font-size: large;
+	left: 25px; 
+	color:#2590A8;
+}
+
+.login-input {
+	border: none;
+	border-bottom: 2px solid #2590A8;
+	background: none;
+	padding: 10px;
+	color:#2590A8;
+	padding-left: 30px;
+	margin-left: 15px;
+	font-weight: 700;
+	width: 90%;
+	transition: .2s;
+	font-size: medium;
+}
+::placeholder{
+	color: #2590a898; 
+}
+.login-input:active,
+.login-input:focus,
+.login-input:hover {
+	outline: none;
+	border-bottom-color: #144F5C;
+	color:#31BBDB;
+}
+
+.login__submit{
+	position: relative;
+	float: right;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 100%;
+	display: flex;
+	cursor: pointer;
+	transition: .2s;
+	border: none;
+	background-color: transparent;
+}
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover{
+	border-color: #25DB98;
+	outline: none;
+}
+
+.button__icon {
+	font-size: 400%;
+	margin-left: auto;
+	color: #25DB98;
+}
+
+.social-login {	
+	position: absolute;
+	height: 140px;
+	width: 160px;
+	text-align: center;
+	bottom: 0px;
+	right: 0px;
+	color: #fff;
+}
+
+.social-icons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-login__icon {
+	padding: 20px 10px;
+	color: #fff;
+	text-decoration: none;	
+	text-shadow: 0px 0px 8px #31BBDB;
+}
+
+.social-login__icon:hover {
+	transform: scale(1.5);	
+}
+.text-danger{
+	color : red;
+	font-size: small;
+	font-weight: bold;
+}
+.back-link{
+	margin-right:20px;
+	font-size: xx-large;
+	color:#75CDE1; 
+	transition: 0.2s;
+}
+.back-link:hover{
+	color:#9fbcc3 !important; 
+}
+:disabled>i{
+	color: rgba(136, 136, 136, 0.723); 
+	border: none;
+	font-size: 400%;
+}

@@ -1,0 +1,46 @@
+<head>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <h1 class="title"><a [routerLink]="['/']" class="back-link"><i class="fas fa-arrow-circle-left"></i> </a>Prijava</h1>
+                <hr>
+                <form class="login"  [formGroup]="service.loginForm" autocomplete="off" (submit)="onSubmit()">
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input formControlName="UserName" type="text" class="form-control-sm login-input required" placeholder="Unesite korisničko ime">
+                        <label class="text-danger" *ngIf="service.loginForm.get('UserName')?.touched && service.loginForm.get('UserName')?.errors?.['required']">
+                            Unesite Vaše korisničko ime!
+                        </label>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input formControlName="Password" type="password" class="form-control login-input required" placeholder="Unesite lozinku">
+                        
+                    </div>
+                    <p>Nemate nalog? <a [routerLink]="['/register']">Registrujte se</a></p>
+                    <button class="button login__submit" [disabled]="!service.loginForm.valid">
+                        <i class="button__icon fas fa-arrow-alt-circle-right"></i>
+                    </button>	
+                </form>
+                <!--<div class="social-login">
+                    <h3>log in via</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-login__icon fab fa-instagram"></a>
+                        <a href="#" class="social-login__icon fab fa-facebook"></a>
+                        <a href="#" class="social-login__icon fab fa-twitter"></a>
+                    </div>
+                </div>-->
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+</body>

@@ -1,0 +1,7 @@
+.neuron{
+    width: 30px;
+    height: 30px;
+    background-color:  /*rgb(153,176,226);*/ rgb(193, 206, 234);
+    margin: auto;
+    margin-bottom: 5px;
+}

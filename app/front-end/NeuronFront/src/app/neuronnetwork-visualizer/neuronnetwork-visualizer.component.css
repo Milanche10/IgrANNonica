@@ -1,0 +1,52 @@
+.containerNN{
+    height: 400px;
+    margin:15px 5px;
+    position: relative;
+    /* float: left;
+    width: 80%; */
+}
+.diagram{
+    width:100%;
+    height:100%;
+    /* background-color: aliceblue; */
+    display: block;
+    z-index: 0;
+    position: absolute;
+}
+.layers{
+    position:absolute;
+    width: 100%;
+    margin:auto 100px;
+    margin-left: 20px;
+}
+.layer{
+    display: inline-block;
+    margin:35px;
+    margin: 0 auto;
+    margin-left: 20px;
+    position: relative;
+    height: 200px;
+    float: left;
+}
+.center{
+    margin-right: 140px;
+}
+app-changeamount ::ng-deep .labels{
+    height:0px !important;
+    display: none !important;
+}
+.many{
+    font-size: 50px;
+    /* vertical-align: auto; */
+    margin-bottom: 45px;
+}
+label{
+    font-size: smaller; 
+}
+.input-number-of-neurons{
+    width:100px;
+}
+.outputs{
+    float:right;
+    margin-right:80px;
+}

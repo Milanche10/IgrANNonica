@@ -1,0 +1,12 @@
+.next-to-each-other{
+    width: 50%;
+    display: inline-block;
+}
+.config-boxes{
+    display: inline-block;
+    width:25%;
+}
+.buttons{
+    display: inline-block;
+    
+}

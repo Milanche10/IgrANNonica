@@ -1,0 +1,136 @@
+*{
+    color: rgba(38, 73, 110, 0.833);
+}
+::ng-deep.mat-dialog-container{
+    background-color: #ddfbf8;
+}
+mat-dialog-content {
+    text-align: center;
+    margin: auto;
+    
+}
+.goback, .continue{
+    background-color: rgb(97, 171, 171);
+    text-align: left;
+    padding: 5px 20px;
+    font-size: medium;
+    color: white;
+}
+.goback:hover{
+    background-color: rgba(19, 107, 136, 0.833);
+     
+}
+.continue:hover{
+    background-color: #27E8A1;
+}
+.title{
+    color: rgba(38, 73, 110, 0.833);
+    font-size: large;
+}
+.text{
+    font-size: medium;
+    color: rgba(38, 73, 110, 0.833);
+}
+mat-slider ::ng-deep  .mat-slider-thumb-label {
+    transform: rotate(45deg) !important;
+    border-radius: 50% 50% 0 !important;
+}
+
+mat-slider ::ng-deep .mat-slider-thumb {
+    transform: scale(0) !important;
+}
+
+mat-slider ::ng-deep  .mat-slider-thumb-label-text {
+    opacity: 1 !important;
+}
+
+.mat-slider-horizontal {
+    max-width: 400px;
+    width: 100%;  
+}
+.mat-dialog-content{
+    overflow: hidden;
+}
+.small {
+    width: 60px;
+    padding: 5px 10px;
+    background-color: rgb(97, 171, 171);
+    border-radius: 10px;
+    text-align: center;
+}
+.small:hover, .small:active{
+    background-color: rgba(19, 107, 136, 0.833);
+    color:white; 
+}
+.disclaimer{
+    font-size: 11px;
+    color:red;
+}
+
+mat-select{
+    width:100px;
+    margin-bottom:10px;
+}
+mat-form-field ::ng-deep .mat-form-field-flex {
+    /* background: transparent !important; */
+    background-color: rgba(38, 73, 110, 0.833);
+    /* background-color: rgb(0,31,57, 0.8); */
+    color: rgb(40, 52, 77) !important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    rgb(40, 52, 77) ;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    rgb(40, 52, 77) ;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    rgb(40, 52, 77) ;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    rgb(40, 52, 77) ;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    rgb(40, 52, 77) ;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    rgb(40, 52, 77) ;
+}
+
+.input-field{
+    border-bottom: 2px solid /*rgb(15, 155, 73);*/ rgb(40, 52, 77);
+}
+
+:host div ::ng-deep .mat-select-arrow {
+    color: rgb(40, 52, 77) !important;
+}
+
+:host div ::ng-deep .mat-form-field-ripple {
+    background-color: /*rgb(15, 155, 73) !important;*/ rgb(40, 52, 77);
+}
+
+:host ::ng-deep .mat-option-text {
+    color: /*rgb(15, 155, 73) !important;*/ rgb(40, 52, 77);
+}
+
+
+mat-select ::ng-deep .mat-select-value {
+    color: rgba(38, 73, 110, 0.833) !important;
+    font-weight: bold;
+    /* color: rgb(0,31,57, 0.8); */
+}
+
+::ng-deep mat-form-field span.mat-form-field-label-wrapper label {
+    color: rgb(40, 52, 77) !important;
+    font-weight: bold;
+    /* color: rgb(0,31,57, 0.8); */
+}
+
+::ng-deep mat-form-field.mat-focused span.mat-form-field-label-wrapper label {
+    color: rgb(40, 52, 77) !important;
+    font-weight: bold;
+    /* color: rgb(0,31,57, 0.8); */
+}

@@ -1,0 +1,25 @@
+<h1>Prikaz zaposlenih:</h1>
+<table *ngIf="zaposleni" id="zaposleni">
+  <thead>
+    <tr>
+
+      <th>Id</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Kompanija</th>
+      <th>Zanimanje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let zaposlen of zaposleni">
+
+      <td>{{zaposlen.id}}</td>
+      <td>{{zaposlen.ime}}</td>
+      <td>{{zaposlen.prezime}}</td>
+      <td>{{zaposlen.kompanija}}</td>
+      <td>{{zaposlen.zanimanje}}</td>
+
+    </tr>
+  </tbody>
+</table>
+

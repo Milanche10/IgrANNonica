@@ -1,0 +1,6 @@
+<div class="container">
+    <br>
+    <div *ngFor="let index of modelList; let i=index">
+        <button mat-stroked-button class="models" [disabled]="LoadingScreenService.isLoading" [ngClass]="{'selected' : i==selectedIndex}" (click)="clickedOnModelButton(i)">{{index}}</button>
+    </div>
+</div>

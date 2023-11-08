@@ -1,0 +1,11 @@
+<div [style.display]="'inline-block'">
+  <div class="labels mb-1">
+    <p [style.display]="title!='' ? 'block' : 'none'">{{title}}</p>
+  </div>
+  <button mat-mini-fab color="black" (click)="onPlusClick()" class="buttons" [disabled]="!isPlusEnabled">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+  <button mat-mini-fab color="black" (click)="onMinusClick()" class="buttons" [disabled]="!isMinusEnabled">
+    <i class="fa-solid fa-minus"></i>
+  </button>
+</div>

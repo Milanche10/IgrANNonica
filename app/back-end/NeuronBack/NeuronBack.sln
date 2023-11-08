@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuronBack", "NeuronBack\NeuronBack.csproj", "{342DF3AC-F003-42AC-BB91-95C9DCE2CADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{342DF3AC-F003-42AC-BB91-95C9DCE2CADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342DF3AC-F003-42AC-BB91-95C9DCE2CADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342DF3AC-F003-42AC-BB91-95C9DCE2CADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342DF3AC-F003-42AC-BB91-95C9DCE2CADF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE2247EA-F324-403F-8CF5-FC166F8091DE}
+	EndGlobalSection
+EndGlobal

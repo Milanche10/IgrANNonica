@@ -1,0 +1,75 @@
+.container {
+    width: 15%;
+    float: left;
+    text-align: center;
+    box-shadow: 0 1px 2px 1px rgb(0 0 0 / 60%);
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 75%;
+    background-color: rgb(40, 52, 77);
+    z-index: -1;
+    overflow:auto;
+}
+.top, .middle, .bottom{
+    position: relative;
+}
+.mat-stroked-button {
+    position: relative;
+    border: 1px solid rgb(153, 176, 226);
+    border-radius: 5px;
+    width: 100%;
+}
+.mat-stroked-button:hover{
+    background-color: rgb(153, 176, 226);
+    color:#144F5C;
+}
+button {
+    display: block;
+    margin: 10px auto;
+}
+
+.buttons {
+    margin: 5px;
+    background-color: rgb(153, 176, 226);
+    color: rgb(40, 52, 77);
+    display: inline-block;
+    margin: auto 5px;
+}
+
+.mat-mini-fab.mat-button-disabled.mat-button-disabled {
+    background-color: rgb(153, 176, 226, .50);
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    position: relative;
+    width: 100%;
+}
+
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+    caret-color: rgb(153, 176, 226);
+    font-size: 15px;
+}
+
+.mat-form-field-outline,
+.mat-form-field-empty.mat-form-field-label,
+.mat-form-field-label,
+.mat-form-field-underline,
+.mat-input-element,
+::placeholder {
+    color: rgb(229,222,99) !important;
+}
+
+mat-label {
+    font-size:medium;
+    color: white; 
+}

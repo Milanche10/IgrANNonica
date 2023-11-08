@@ -1,0 +1,39 @@
+<div [style.display]="'inline-block'" [style.width.%]="15" class="entire-box">
+  <div class="labels mb-3">
+    <p >{{title}}</p>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" [style.display]="isSingle ? 'block' : 'none'" class="select-options">
+    <mat-label>odabrano</mat-label>
+    <mat-select [(ngModel)]="selectedOption" (selectionChange)="selectedSingle()" [disabled]="disabled" [placeholder]="previouslySelectedOption">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    <mat-chip-list [style.display]="!isSingle ? 'inline-block' : 'none'" #chipList aria-label="Option selection" class="input-field">
+      <mat-chip
+        *ngFor="let option of selectedOptions"
+        (removed)="remove(option)">
+        {{option}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Dodaj..."
+        #optionInput
+        [formControl]="optionCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [disabled]="disabled"
+       >
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" >
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</div> 

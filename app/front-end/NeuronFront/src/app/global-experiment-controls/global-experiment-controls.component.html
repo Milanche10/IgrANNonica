@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="top">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ime eksperimenta</mat-label>
+            <input id="experimentName" matInput placeholder="Klasifikacija galaksija po spektru" [(ngModel)]="experimentName" value="{{experimentName}}" (change)="onExperimentNameChange()">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="example-full-width model" appearance="fill">
+            <mat-label>Ime modela</mat-label>
+            <input matInput placeholder="{{placeholder}}" [(ngModel)]="name" (change)="onInputChange()" value="{{modelList[modelId]}}">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <button mat-stroked-button (click)="onDeleteClick()" [disabled]="modelList.length==1 || LoadingScreenService.isLoading">Obriši model</button>
+    </div>
+    <div class="middle">
+        <button mat-stroked-button (click)="onCreateNewModelClick()" [disabled]="LoadingScreenService.isLoading">Kreiraj novi model</button>
+        <button mat-stroked-button (click)="onCreateNewExperimentClick()" [disabled]="LoadingScreenService.isLoading">Novi eksperiment</button>
+        <button mat-stroked-button (click)="onAddNewDataToExistingExperimentClick()" [disabled]="LoadingScreenService.isLoading"> Ubaci nove podatke</button>
+        <button mat-stroked-button (click)="SaveExperiment()" [disabled]="LoadingScreenService.isLoading"> Sačuvaj eksperiment</button>
+        <button mat-stroked-button (click)="SaveModel()" [disabled]="LoadingScreenService.isLoading"> Sačuvaj model</button>
+    </div>
+    <div class="bottom">
+        <h2>Kreirani modeli:</h2>
+        <button mat-mini-fab color="black" (click)="onPreviousClick()" class="buttons" [disabled]="isPreviousEnabled">
+            <i class="fa-solid fa-caret-left"></i>
+        </button>
+        <button mat-mini-fab color="black" (click)="onNextClick()" class="buttons" [disabled]="isNextEnabled">
+            <i class="fa-solid fa-caret-right"></i>
+        </button>
+        
+    </div>
+    <app-models-overview [selectedIndex]="modelId" [modelList]="modelList" (clickedOnModel)="changedModelOnClick($event)"></app-models-overview>
+</div>

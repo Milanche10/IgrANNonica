@@ -1,0 +1,26 @@
+body{
+	background: linear-gradient(-45deg, #75CDE1, #22859C,#144F5C)!important;
+	overflow: hidden;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important; 
+}
+
+h1{
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+}
+h1:hover{
+	color: rgb(211, 211, 211);
+  cursor: pointer; 
+}
+tr{
+	color: white;
+}
+
+.forma{
+	margin-left: 50px;
+}
+.tabelica{
+	margin-right: 50px;
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Upozorenje</h4>
+    </div>
+    <div class="modal-body" style="background-color: rgba(176, 176, 176, 0.37);">
+      <p>Da li ste sigurni da želite da obrišete model pod nazivom <i>{{modelName}}</i>? Vraćanje modela neće biti moguće. 
+      </p>
+    </div>
+    <div class="modal-footer" style="background-color: rgba(176, 176, 176, 0.37)">
+      <button type="button" class="btn bg-confirm" aria-label="Close" (click)="d('Cross click')"> Odustani </button>
+      <button type="button" class="btn bg-danger" (click)="deleteModel(content)"> Obriši </button>
+    </div>
+
+  </ng-template>
+  
+      <p *ngIf="!service.models" class="loading"><em>Modeli se učitavaju ...</em></p>
+      <p *ngIf="!service.lengthOfModels()"><em>Za odabrani eksperiment nemate modele</em></p>
+      <ngb-pagination *ngIf="service.lengthOfModels()" class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="service.lengthOfModels()" [maxSize]="5"></ngb-pagination>
+      <mat-card class="card" *ngFor = "let model of service.models | slice: (page-1) * pageSize : page * pageSize; let i = index;" [class.active]="service.getLinkModel(model)"
+      (click)="setModel(model)">
+       <mat-card-title *ngIf="showEdit(i)"><input type="text" [(ngModel)]="model.modelName"></mat-card-title>
+       <mat-card-title *ngIf="!showEdit(i)">{{model.modelName}}</mat-card-title>
+        <mat-card-content>
+          Datum kreiranja: {{model.createDate  | date: 'dd/MM/yyyy'}}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="btn-delete" (click)="open(content, model)"><i class="fa-solid fa-trash"></i></button>
+        <!-- <button mat-button class="btn-edit" *ngIf="showEdit(i)" (click)="enableEdit=false" ng-click="cancel()"><i class="fas fa-close"></i></button>
+          <button mat-button class="btn-edit" *ngIf="showEdit(i)" (click)="saveEdit(model)" type="submit"><i class="fas fa-save"></i></button>
+          <button mat-button class="btn-edit" *ngIf="!enableEdit" (click)="enableEditMethod(i)"><i class="fa solid fa-pencil"></i></button>-->
+          <button mat-button class="btn-view" (click)="openModel(model)"><i class="fa-solid fa-arrow-right"></i></button>
+        </mat-card-actions>
+      </mat-card>
+  

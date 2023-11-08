@@ -1,0 +1,1 @@
+Ovaj folder koriste članovi tima za čuvanje svojih dokumenata, testnih projekata itd.

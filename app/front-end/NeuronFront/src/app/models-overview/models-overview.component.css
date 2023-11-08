@@ -1,0 +1,10 @@
+.container {
+}
+.models{
+    display: block;
+    margin: 10px auto;
+    width:max-content;
+}
+.selected{
+    box-shadow: 0 1px 2px 1px rgb(153 176 226 / 60%);
+}

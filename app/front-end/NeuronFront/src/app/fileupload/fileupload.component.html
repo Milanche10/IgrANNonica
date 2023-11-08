@@ -1,0 +1,291 @@
+<app-head></app-head>
+<html>
+<body>
+  <app-navbar></app-navbar>
+  <br>
+  <br>
+  <div *ngIf="pocetna">
+  <section class="cards-wrapper">
+    <div class="card-grid-space">
+      <div class="num">01</div>
+      <div class="card">
+        <div>
+          <h1>Unos fajlova i obrada podataka</h1>
+         <button (click)="Prosiri(1)">Otvorite</button>
+         <p>U ovom delu, potrebno je uneti odgovarajući set podataka.
+           Podaci se mogu očistiti, brisanjem outlier-a, nedostajućih vrednosti.
+           Nedostajuće vrednosti <b>obavezno</b> popuniti ili obrisati.
+           Nepotrebne kolone i redove moguće je obrisati.
+           Podaci u ćelijama se mogu menjati.
+         </p>
+        </div>
+      </div>
+    </div>
+    <div class="card-grid-space">
+      <div class="num">02</div>
+      <div class="card">
+        <div>
+          <h1>Iscrtavanje grafika</h1>
+          <div [style.display]="!fileUploadS.display?'none':true"> <button (click)="Prosiri(2)">Otvorite</button> </div>
+          <p>U ovom delu postoji opcija za iscrtavanje grafika za izabranu kolonu.
+            Ukoliko se odaberu 2 kolone, moguće je proceniti vezu između podataka u njima.<br>
+           <b> NAPOMENA: Ovom delu se može pristupiti tek nakon završenog prvog koraka.</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card-grid-space">
+      <div class="num">03</div>
+      <a class="card">
+        <div>
+          <h1>Izaberite kolone za dalji rad</h1>
+        <div [style.display]="!fileUploadS.display?'none':true">  <button (click)="Prosiri(3)">Otvorite</button> </div>
+        <p>U ovom delu, potrebno je izabrati ulazne i izlane kolone 
+          kako bi se omogućio rad sa neuronskom mrežom. 
+          Podatke je moguće enkodirati i skalirati.
+          Prikazana je i originalna tabela podataka.<br>
+         <b> NAPOMENA: Ovom delu se može pristupiti tek nakon završenog prvog koraka.</b>
+        </p>
+        </div>
+      </a>
+    </div>
+  </section>
+  </div>
+  <br><br>
+  <div class="cards-wrapper1" *ngIf="!pocetna">
+    <div [ngClass]="{'card_small_clicked':!pocetna && fajl_prikaz,
+                     'card_small':!(!pocetna && fajl_prikaz)
+                    }" 
+     (click)="Prosiri(1)">
+     <div>
+        <h5> Izbor fajlova</h5>
+      </div>
+   </div>
+
+   <div [ngClass]="{'card_small_clicked':!pocetna && graf,
+                     'card_small':!(!pocetna && graf)
+                    }" 
+     (click)="Prosiri(2)">
+     <div>
+        <h5>Iscrtavanje grafika</h5>
+      </div>
+   </div>
+
+   <div [ngClass]="{'card_small_clicked':!pocetna && izbor_kolona,
+                    'card_small':!(!pocetna && izbor_kolona)
+                    }" 
+     (click)="Prosiri(3)">
+     <div>
+        <h5>Izbor kolona</h5>
+      </div>
+   </div>    
+</div>
+  <div *ngIf="!pocetna && fajl_prikaz">
+    <div class="veliki_prikaz">
+      <div>
+        <i class="fas fa-arrow-circle-left back-link" (click)="pocetna=true; Nova()" style="margin-right:0px;"></i> <br><br><br>
+        <!--unos fajla deo-->
+        <div class="ff" style="width:75%; float: left;" #myIdentifier>
+          <div class="choseFile">
+            <button  (click)="IzborFajla()">Izbor fajla</button>
+            <input type='file' accept=".csv, .xls, .json, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, application/JSON"  id="getFile" style="display:none" (change)="fileUpload($event)">
+      &nbsp; <span id="chosenFileText" *ngIf="filename && fileUploadS.display" style="color:#ccc;"><b>Izabrali ste: {{filename}}</b></span>
+          </div>
+          <br>
+         <div class="spinner"> <mat-spinner *ngIf="fileUploadS.isLoading"></mat-spinner> </div>
+      <button (click)="fileUploadS.cuvanjeIzmenaCelija()" *ngIf="fileUploadS.updatedArray.length > 0">Sačuvaj izmene ćelija</button>  &nbsp; <button (click)="fileUploadS.brisanjeIzmena()" *ngIf="fileUploadS.updatedArray.length > 0">Ukloni izmene ćelija</button>
+      <br>
+      <div class="alert" *ngIf="prazno_ciscenje">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Da biste očistili podatke, morate izabrati kolone i opcije za čišćenje, koje želite da se primene nad tom kolonom.
+      </div>
+      <div class="alert_good" *ngIf="ocisceno">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Uspešno su očišćeni podaci. Promene možete videti u tabeli ispod.
+      </div>
+      <div class="alert" *ngIf="fileUploadS.alert_bad || fileUploadS.alert_bad_format">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{fileUploadS.message}}
+      </div>
+      <div class="cenpage" *ngIf="fileUploadS.display">Predji na: <input type="number" class="inp_number"  [value]="fileUploadS.brojPodataka" #broj (keyup.enter)="fileUploadS.prelazakNaStranu(broj.value)"></div> 
+      <div class="cenpage" *ngIf="fileUploadS.display"><button (click)="fileUploadS.Previous()"> <<< </button> &nbsp;{{fileUploadS.pageNumber}}/{{fileUploadS.brojPodataka}}&nbsp;<button (click)="fileUploadS.Next()"> >>></button></div>
+      <div  class="containerT" *ngIf="fileUploadS.display">
+      <br><table id="tabela" style="position: relative;">
+          <thead style="position: static;">
+           <tr >
+            <th *ngFor="let item of fileUploadS.koloneIzbora;let i=index; ">{{item.name}}<br><span *ngIf="!fileUploadS.izmena_u_toku" class="spanTrash" (click)="ObrisiKolonu(i)" style="position: relative; bottom: -1px;"><i class="fa-solid fa-trash"></i></span></th>
+              <th class="out">Brisanje</th>
+            </tr>
+          </thead>
+        
+          <tbody >
+           
+            <tr class="m" *ngFor="let item of fileUploadS.redovi[0];let i=index;">
+              <td *ngFor="let itemm of fileUploadS.kolone[0]; let j = index" ><div style="overflow: hidden; height: 30px;"><div [style.display]="fileUploadS.isItem.i==i && fileUploadS.isItem.j==j && fileUploadS.isVisible ? 'block' : 'none'"><div (keyup.enter)="onSubmitEvent(i, change.value,j)"><div  class="input-wrapper"><input  value="{{item[j]}}" #change> <i class="fa fa-times" (click)="Close(change,i,j)" aria-hidden="true"></i></div></div></div><div [style.display]="!fileUploadS.isVisible || (fileUploadS.isItem.i!=i || fileUploadS.isItem.j!=j )  ? 'block' : 'none'" style="cursor: grab;" (click)="Edit(i,j)">{{item[j]}}</div></div></td>
+              <td class="out"><div style="overflow: hidden; height: 30px;"><span *ngIf="!fileUploadS.izmena_u_toku" class="spanTrash" (click)="obrisiRed(i)" [style.cursor]="fileUploadS.izmena_u_toku? 'no-drop':'pointer'"><i class="fa-solid fa-trash"></i></span></div></td>
+            </tr>
+          
+          </tbody>
+        
+      </table>
+      </div> 
+      <app-statistika *ngIf="fileUploadS.display"></app-statistika>
+        </div>
+      <div style="position: relative; top: -40px; width: 24%; float: left;">
+        <b style="width: 100%; text-align: center;" *ngIf="fileUploadS.display">Odaberite opciju za čišćenje podataka:</b><br><br>
+        <div style="width: 100%-5px; text-align: center; margin-left: auto; margin-right: auto;"> <button *ngIf="fileUploadS.display" (click)="SrediPodatke()" [disabled]="fileUploadS.izmena_u_toku">Očisti podatke</button></div><br> 
+      </div>
+        <div class="no_hover" style="color: #ccc; display: inline; float: left; width: 24%; overflow-y: scroll; border-left: 2px solid #30545C; position: relative; right: -5px; padding-left: 5px;" *ngIf="fileUploadS.display" [style.height.px]='myIdentifier.offsetHeight'>
+        <div *ngFor="let item of fileUploadS.koloneIzbora; let i=index;">
+          
+          <div class="element"  [style.background-color]="ch.checked && (chop1.checked || chop2.checked || chop3.checked || chop4.checked || chop5.checked)? '#75CDE1' : 'transparent'"  [style.color]="ch.checked && (chop1.checked || chop2.checked || chop3.checked || chop4.checked || chop5.checked)? '#30545C' : '#ccc'" style="padding: 10px; border-radius: 10px;">
+            <input type="checkbox" #ch  name="clean" [checked]="chop1.checked || chop2.checked || chop3.checked || chop4.checked || chop5.checked" (change)="Odabrano_ciscenje($event)">{{item.name}}
+            <div style="margin-left: 10px">
+                <input type="checkbox" #chop1 name="option{{i}}" [checked]="chop4.checked || chop5.checked || ch.checked" >&nbsp; Postavi prazne celije na NaN<br>
+                <input type="checkbox" #chop2 name="option{{i}}" [disabled]="chop4.checked || chop5.checked" [checked]="chop2.checked && ch.checked && chop1.checked">&nbsp; Obriši NaN<br>
+                <input type="checkbox" #chop3 name="option{{i}}" [disabled]="item.tip_org=='Kategorijska'" [checked]="chop3.checked && ch.checked" >&nbsp; Obrisi outlier-e<br>
+                <input type="checkbox" #chop4 name="option{{i}}" [disabled]="chop5.checked || item.tip_org=='Kategorijska' || chop2.checked"[checked]="chop4.checked && chop1.checked && ch.checked" >&nbsp; Popuni NaN srednjom vrednošću<br>
+                <input type="checkbox" #chop5 name="option{{i}}" [disabled]="chop4.checked || chop2.checked" [checked]="chop5.checked && chop1.checked && ch.checked" >&nbsp; Popuni NaN najčešćom vrednošću<br>
+            </div>  
+       
+        </div> 
+      </div>
+       </div>
+       
+      </div>
+    </div> <!--Veliki prikaz-->
+  </div>
+  <div *ngIf="!pocetna && graf">
+   <br><br>
+    <div class="graphic-box">
+      <i class="fas fa-arrow-circle-left back-link" (click)="pocetna=true; Nova()"></i> 
+      <div>
+        <div class="settings">
+          <div [ngStyle]="{'visibility':lengthItems()<2 ? 'visible' : 'hidden'}">
+            <label class="label">Izaberi tip grafika: </label>
+            <select #lista class="select-graphic" [disabled]="(lengthItems()==0) || (lengthItems()>1)">
+              <option class="option-graphic" *ngIf="jeste_broj">Violin dijagram</option>
+              <option class="option-graphic" *ngIf="jeste_broj">Boxplot</option>
+              <option class="option-graphic" *ngIf="!jeste_broj">Histogram</option>
+            </select>
+          </div>
+          <button class="btn" [disabled]="lengthItems()==0" (click)="drawGraphics(lista.value)">Nacrtaj grafik</button>
+          &nbsp;
+          <div class="small-box">
+            <form>
+              <ng-container *ngFor="let item of fileUploadS.koloneIzbora">
+                <!--<div>
+                  <input class="checkbox" (change)="checkItem($event)" [value]="item.value" #checkbox [disabled]="disableCheckbox(checkbox)" type="checkbox"/>
+                  <label for="checkbox">{{item.value}}</label>
+                </div>-->
+                <label class="box-checkbox" *ngIf="!item.tip_not">
+                  <input type="checkbox" (change)="checkItem($event)" [value]="item.id" #checkbox [disabled]="disableCheckbox(checkbox)">
+                  <span class="checkmark" [class.disabled]="disableCheckbox(checkbox)"></span>
+                  <label>{{item.name}}</label>
+                </label>
+                </ng-container>
+            </form>
+           </div>
+        </div>
+        <div *ngIf="prikazi_sliku" class="image-box"><img id="myimage" [src]='image'/></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!pocetna && izbor_kolona">
+    <div class="veliki_prikaz">
+      <i class="fas fa-arrow-circle-left back-link" (click)="pocetna=true; Nova()" ></i> 
+      <div>
+        <h1>3. Izbor ulaznih i izlaznih kolona</h1>
+       
+        <!--izbor kolona-->
+      
+        <div class="alert" *ngIf="fileUploadS.alert_in_out">
+          <span class="closebtn" (click)="fileUploadS.alert_in_out">&times;</span>
+          Da biste kreirali neuronsku mrezu, morate imati izabrane barem jednu ulaznu i jednu izlaznu kolonu!
+        </div>
+         <div class="selectionTable" *ngIf="fileUploadS.display">
+          <table>
+            <thead>
+              <tr >
+              <th>Naziv kolone</th>
+              <th>Tip kolone</th>
+              <th>Ulaz/Izlaz</th>
+              <th>Enkodiranje</th>
+              <th>Skaliranje</th>
+               </tr>
+             </thead>
+             <tbody>
+             
+               <tr *ngFor="let item of fileUploadS.koloneIzbora;let i=index;" [style.opacity]="inout.value!='Ignoriši kolonu'? '100%' : '50%'">
+              <td><b><div style="width: 20px; float: left; margin-left: 20px; margin-right: auto;"> {{item.name}}</div></b></td>
+                <td>
+                  <select class="selection" #tip (change)="item.tip=tip.value" [style.background-color]="inout.value=='Ignoriši kolonu'? 'transparent' : '#75cde190'">
+                  <option [selected]="item.tip=='Kategorijska'? true: false">Kategorijska</option>
+                  <option [selected]="item.tip=='Numerička'? true: false">Numerička</option>
+                </select>
+              </td>
+                <td>
+                  <select class="selection"  #inout (change)="item.ulaz_izlaz=inout.value" [style.background-color]="inout.value=='Ignoriši kolonu'? 'transparent' : '#75cde190'">
+                    <option>ulaz</option>
+                    <option [selected]="i==fileUploadS.koloneIzbora.length-1?true:false">izlaz</option>
+                    <option>Ignoriši kolonu</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class="selection" #encode (change)="item.enkodiranje=encode.value" [disabled]="item.tip!='Kategorijska'? true: false" [style.cursor]="tip.value!='Kategorijska'? 'no-drop': 'pointer'" [style.background-color]="inout.value=='Ignoriši kolonu' || tip.value!='Kategorijska'? 'transparent' : '#75cde190'">
+
+                    <option [selected]="item.enkodiranje=='Label encoding'">Label encoding</option>
+                    <option>OneHot Encoding</option >
+                    
+                </select>
+              </td>
+                <td>
+                <select class="selection" #scale (change)="item.skaliranje=scale.value" [disabled]="item.tip=='Kategorijska' && encode.value=='Nije odabrano'? true: false" [style.cursor]="item.tip=='Kategorijska' && encode.value=='Nije odabrano'? 'no-drop': 'pointer'" [style.background-color]="inout.value=='Ignoriši kolonu' || (item.tip=='Kategorijska' && encode.value=='Nije odabrano')? 'transparent' : '#75cde190'">
+                    <option>Nije odabrano</option>
+                    <option>Normalize</option>
+                    <option>Standardize</option>
+                    <option>Min Max</option>
+                  </select>
+                </td>
+                
+               </tr>
+             
+             </tbody>
+          </table>
+        </div>
+        
+        <br>
+       <button (click)="postaviPoruku();openDialog();" *ngIf="!fileUploadS.izabrano_jednom"> Sacuvaj izbor</button>
+        <br>
+        <br>
+        <button (click)="goTo()"  *ngIf="fileUploadS.display" [disabled]="!fileUploadS.odredjen_inout">Kreiraj neuronsku mrežu</button>
+        <br>
+        <div class="alert_good" *ngIf="fileUploadS.skalirano || fileUploadS.enkodirano">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          Uspešno su <span *ngIf="fileUploadS.enkodirano">enkodirani</span>  <span *ngIf="fileUploadS.skalirano && fileUploadS.enkodirano"> i</span> <span *ngIf="fileUploadS.skalirano"> skalirani</span> podaci. Promene možete videti u tabeli ispod.
+        </div>
+        <br>
+        <div class="cenpage" *ngIf="fileUploadS.display">Predji na: <input type="number" class="inp_number"  [value]="fileUploadS.brojPodataka" #broj (keyup.enter)="fileUploadS.prelazakNaStranu(broj.value)"></div> 
+        <div class="cenpage" *ngIf="fileUploadS.display"><button (click)="fileUploadS.Previous()"> <<< </button> &nbsp;{{fileUploadS.pageNumber}}/{{fileUploadS.brojPodataka}}&nbsp;<button (click)="fileUploadS.Next()"> >>></button> </div>
+      <div class="containerT" *ngIf="fileUploadS.display">
+      <br>
+      <table id="tabela">
+        <thead>
+          <tr >
+           <th *ngFor="let item of fileUploadS.kolone[0];let i=index; ">{{item}}</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr class="m" *ngFor="let item of fileUploadS.redovi[0];let i=index;">
+             <td *ngFor="let itemm of fileUploadS.kolone[0]; let j = index" ><div style="overflow: hidden; height: 30px;">{{item[j]}}</div></td>
+             
+           </tr>
+         </tbody>
+      </table>
+      </div>
+      </div>
+    </div>
+   
+  </div>
+</body>
+</html>

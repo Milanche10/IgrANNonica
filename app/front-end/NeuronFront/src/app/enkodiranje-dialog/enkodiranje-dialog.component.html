@@ -1,0 +1,8 @@
+<h2 mat-dialog-title class="title">Potvrđivanje akcije</h2>
+<mat-dialog-content class="mat-typography">
+<p>Ovu akciju ne možete poništiti! Da li ste sigurni da želite da nastavite?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="ponisti()">Odustajem</button>
+  <button mat-button cdkFocusInitial (click)="SrediPodatke()">Potvrđujem</button>
+</mat-dialog-actions>

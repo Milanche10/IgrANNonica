@@ -1,0 +1,32 @@
+<mat-dialog-content>
+    <h1 class="title"><b>Podaci su spremni!</b></h1>
+    <p class="text">Odaberi tip problema i koliko ce biti podataka u skupu za trening, za validaciju i za testiranje:</p>
+    <p style="display: inline">Tip problema</p>
+    <mat-select style="margin-left: 10%;" [(ngModel)]="selectedOption" (selectionChange)="selectedSingle()" [placeholder]="previouslySelectedOption">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+    </mat-select>
+    <p style="clear:both;">Trening skup</p>
+    <mat-slider thumbLabel [displayWith]="formatLabel" (valueChange)="onTrainValueChange($event,false)"
+        tickInterval="1000" step="1" min="0" max="100" aria-label="units" [(ngModel)]="trainValue"></mat-slider>
+    <input type="number" class="small" [(ngModel)]="trainValue" (change)="onTrainValueChange($event,true)">
+    <p>Validacioni skup</p>
+    <mat-slider thumbLabel [displayWith]="formatLabel" (valueChange)="onValidationValueChange($event,false)"
+        tickInterval="1000" step="1" min="0" max="100" aria-label="units" [(ngModel)]="validationValue"></mat-slider>
+    <input type="number" class="small" [(ngModel)]="validationValue" (change)="onValidationValueChange($event,true)">
+    <p>Testni skup</p>
+    <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000"
+        (valueChange)="onTestValueChange($event,false)" step="1" min="0" max="100" aria-label="units"
+        [(ngModel)]="testValue"></mat-slider>
+    <input type="number" class="small" [(ngModel)]="testValue" (change)="onTestValueChange($event,true)">
+    <p class="disclaimer" *ngIf="!testValue">Evaluacija se nece izvrsiti ako nema elemenata u testnom skupu.</p>
+    <br *ngIf="testValue">
+    <p>Neupotrebljeni podaci: {{unused}}%</p>
+    <mat-checkbox (change)="toggleRandomizedOption()">Promešati podatke</mat-checkbox>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="goback" mat-button mat-dialog-close [routerLink]="['fileupload']">Nazad</button>
+    <button class="continue" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onProceed()"
+        [disabled]="trainValue<=0 || (unused!=0)">Nastavi</button>
+</mat-dialog-actions>

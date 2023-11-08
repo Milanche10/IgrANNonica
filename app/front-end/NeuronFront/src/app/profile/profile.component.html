@@ -1,0 +1,19 @@
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<app-navbar></app-navbar>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Eksperimenti">
+    <div class="box mat-elevation-z4">
+      <h2> Eksperimenti </h2>
+      <app-experiments></app-experiments>
+    </div>
+    <div class="box mat-elevation-z4">
+      <h2> Prikazuju se modeli za eksperiment {{experimentName}} </h2>
+      <app-models></app-models>
+    </div>
+  </mat-tab>
+</mat-tab-group>

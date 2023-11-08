@@ -1,0 +1,177 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: medium;
+}
+.container{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+button{
+  background-color:#35a0de; 
+  color: white; 
+  border: none;
+  font-size: large;
+  border-radius: 10px;
+  border: 1px #1753769c;
+ }
+button:hover{
+  background-color: rgba(255, 255, 255, 0.728);
+  color: #024b75; 
+  border: 1px #024a75;
+}
+/* MODEL DIALOG*/
+.modal-header{
+  background-color: rgb(198, 35, 35);
+  font-size: larger;
+}
+.modal-title{
+  padding: 10px 60px;
+  font-size:larger;
+  color: white; 
+  margin: 0;
+  text-align: center;
+}
+.modal-body{
+  font-size: larger;
+  padding: 10px 30px;
+}
+.bg-confirm, .bg-danger{
+  font-size: larger;
+  padding: 5px 10px;
+  margin: 10px 5px;
+}
+.bg-confirm:hover{
+  background-color: rgba(38, 110, 38, 0.833);
+  color: white; 
+}
+.bg-danger{
+  background-color: rgb(235, 112, 112)!important; 
+}
+.bg-danger:hover{
+  background-color: red !important;
+  color: white; 
+}
+input{
+  background-color: transparent;
+  color: rgb(255, 255, 255); 
+  border: none;
+  padding: 0px 10px;
+  border-bottom: 2px solid #024a75;
+}
+.models-table{
+  margin: 20px auto;
+  background-color: rgba(137, 202, 213, 0.595);
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  max-width: 900px;
+}
+.models-table thead tr{
+  background-color: #027562a6;
+}
+.models-table tbody tr, .models-table thead tr{
+  color: rgb(0, 58, 96); 
+}
+.models-table td, .models-table th {
+  font-size: 23px;
+  border: 1px solid rgb(0, 55, 114);
+  border: none;
+  text-align: center;
+  width: 10px; 
+}
+.models-table tr:nth-child(even){
+    background-color: #068377b6;
+}
+.models-table th {
+  font-size: 23px;
+  background-color: rgba(255, 255, 255, 0.328);
+}
+/*EDIT, VIEW, DELETE*/
+.btn-close{
+  margin: 0px 20px; 
+  padding: 20px; 
+  background-color: rgb(214, 4, 4);
+  color:white; 
+}
+.btn-view{
+  background-color: #f8ad0c9a; 
+  color:white; 
+}
+.btn-delete{
+  background-color: rgba(245, 6, 6, 0.601);
+  color: white;
+}
+.btn-edit{
+  background-color: #3665a3b4; 
+  color:white; 
+}
+.btn-view:hover{
+  background-color: #f8ad0cd1; 
+  color:white; 
+}
+.btn-delete:hover{
+  background-color: rgba(245, 6, 6, 0.793);
+  color: white;
+}
+.btn-edit:hover{
+  background-color: #3665a3d1; 
+  color:white; 
+}
+/* CARD*/
+.card {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px ;
+  padding: 10px 20px 15px 20px;
+  background-color: rgba(255, 255, 255, 0.115);
+  color: white;
+}
+.active{
+  background-color: #27e8a184  !important;
+}
+::ng-deep .mat-card-title{
+  font-size: large;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+::ng-deep .mat-card-actions{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+::ng-deep .mat-card-content{
+  margin: 0;
+  padding: 0;
+}
+::ng-deep .mat-button{
+  margin: 0;
+}
+/*PAGE*/
+ngb-pagination{
+  text-align: center;
+}
+ngb-pagination ::ng-deep a {
+  font-weight: bold;
+  font-size: small;
+  box-shadow: none;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  color: white !important; 
+  background-color: #2590A8 ;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+  color: white !important; 
+  background-color:#2590A8;
+  box-shadow: none;
+}
+ngb-pagination ::ng-deep .page-link{
+  background-color: rgba(230, 247, 255, 0.851);
+  border: 2px solid #2590A8!important;
+  color: #2590A8 !important; 
+}

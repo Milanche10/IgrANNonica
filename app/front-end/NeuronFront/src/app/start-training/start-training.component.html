@@ -1,0 +1,27 @@
+<div class="display-under">
+    <div class="display-inline">
+        <p>Batch Size</p>
+        <mat-slider thumbLabel [displayWith]="formatLabel" aria-label="unit(s)" step="1" min="0" max="8" [disabled]="disabled" (change)="onBatchSizeValueChange($event)" [(ngModel)]="stepIndex"
+           ></mat-slider>
+            <span>{{BatchSize}}</span>
+        <!-- <input type="number" class="small" [(ngModel)]="BatchSize" (change)="onBatchSizeValueChange()"> -->
+    </div>
+    <div class="display-inline">
+        <p>Broj epoha</p>
+        <mat-slider thumbLabel  tickInterval="1000" step="1" min="0" max="3000" aria-label="units" [disabled]="disabled"
+            [(ngModel)]="NumOfEpochs"></mat-slider>
+        <input type="number" class="small" [(ngModel)]="NumOfEpochs">
+    </div>
+    <div class="display-inline">
+        <!-- <mat-checkbox (change)="toggleEarlyStopping()" [disabled]="disabled">Prevremeno stopiranje</mat-checkbox> -->
+        <div class="display-next">
+            <p>Prevremeno stopiranje</p>
+            <input type="number" class="small" [(ngModel)]="EarlyStopping">
+        </div>
+        <div class="display-next">
+            <button mat-fab matTooltip="Pokreni treniranje" color="black" class="playbutton" (click)="onPlayClick();" *ngIf="!disabled" [disabled]="disabled || !enabled"><i class="fa-solid fa-play" matTooltip="Prvo zakljucaj konfiguraciju" [matTooltipDisabled]="!disabled && enabled"></i></button>
+            <button mat-fab color="black" class="playbutton" *ngIf="disabled" [disabled]="true"><i class="fa-solid fa-slash"></i></button>
+            <!-- <button mat-fab color="black" class="playbutton" *ngIf="disabled && EarlyStopping" (click)="onStopTrainingClick()"><i class="fa-solid fa-pause"></i></button> -->
+        </div>
+    </div>
+</div>
